@@ -24,6 +24,7 @@ string Execute(string alu_ctrl, string data_1, string data_2)
     else if (alu_ctrl == "0110") // sub
     {
         int sum = bin_to_dec(data_1) - bin_to_dec(data_2); // sum
+        cout << "sub" << bin_to_dec(data_1) << " " << bin_to_dec(data_2) << endl;
         to_return = dec_to_bin(sum);
     }
     else if (alu_ctrl == "0000") // and

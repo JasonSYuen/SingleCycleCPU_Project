@@ -53,8 +53,9 @@ string dec_to_bin(int a) // decimal to binary
     }
     if (a == 0)
     {
-        return 0;
+        return "0";
     }
+
     if (a < 0)
     {
         for (int i = 0; i < bin.length(); i++)
@@ -150,11 +151,11 @@ int hex_to_dec(string address)
 {
     int n = 0;
     int count = address.length();
-    cout << "count: " << count << endl;
+    // cout << "count: " << count << endl;
     for (int i = 0; i < address.length(); i++)
     {
-        cout << address[i] << endl;
-        cout << int(address[i]) << endl;
+        // cout << address[i] << endl;
+        // cout << int(address[i]) << endl;
         if (int(address[i]) > 64 && int(address[i] < 71))
         {
             int val_letter = int(address[i]) - 55;
@@ -166,8 +167,8 @@ int hex_to_dec(string address)
             n = n + (int(address[i]) - 48) * pow(16, count - 1);
         }
         count--;
-        cout << "count: " << count << endl;
-        cout << "N: " << n << endl;
+        // cout << "count: " << count << endl;
+        // cout << "N: " << n << endl;
     }
 
     return n;
