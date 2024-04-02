@@ -13,11 +13,8 @@ int Mem(string address, string lw_sw, string to_store)
 {
     // for testing purposes
     // cout << "////" << endl;
-    for (int i = 0; i < 32; i++)
-    {
-
-        d_mem[i] = i;
-    }
+    d_mem[28] = 5;
+    d_mem[29] = 16;
     int place_in_array = 0;
 
     place_in_array = hex_to_dec(address) / 4;
