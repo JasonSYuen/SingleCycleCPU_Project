@@ -1,3 +1,5 @@
+#ifndef Mem_H_
+#define Mem_H_
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -30,33 +32,4 @@ int Mem(string address, string lw_sw, string to_store)
 
     return d_mem[place_in_array];
 }
-
-string dec_to_bin(int a) // decimal to binary
-{
-    string bin = "";
-    if (a > 0)
-    {
-        int count = 0;
-        int temp = a;
-        while (temp - pow(2, count) >= 0)
-        {
-            count++;
-        }
-        // cout << count << endl;
-        while (count > 0)
-        {
-            if (a - pow(2, count - 1) >= 0)
-            {
-                bin.append("1");
-                a = a - pow(2, count - 1);
-            }
-            else
-            {
-                bin.append("0");
-            }
-            count--;
-        }
-        cout << bin << endl;
-    }
-    return bin;
-}
+#endif

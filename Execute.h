@@ -1,3 +1,5 @@
+#ifndef Execute_H_
+#define Execute_H_
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -74,3 +76,5 @@ string Execute(string alu_ctrl, string data_1, string data_2)
     // cout << to_return << endl;
     return to_return;
 }
+
+#endif

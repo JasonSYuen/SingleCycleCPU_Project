@@ -3,7 +3,7 @@
 #include "Execute.h"
 #include "Mem.h"
 #include "decode.h"
-#pragma once
+
 using namespace std;
 
 int pc = 0;

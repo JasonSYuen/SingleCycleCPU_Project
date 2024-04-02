@@ -1,3 +1,5 @@
+#ifndef Fetch_H_
+#define Fetch_H_
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -34,3 +36,4 @@ string Fetch()
 
     return text;
 }
+#endif

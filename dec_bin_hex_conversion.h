@@ -1,38 +1,12 @@
+#ifndef Dec_Bin_Hex_Conversion_H_
+#define Dec_Bin_Hex_Conversion_H_
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <math.h>
 #include <sstream>
 using namespace std;
-string dec_to_bin(int a) // decimal to binary
-{
-    string bin = "";
-    if (a > 0)
-    {
-        int count = 0;
-        int temp = a;
-        while (temp - pow(2, count) >= 0)
-        {
-            count++;
-        }
-        // cout << count << endl;
-        while (count > 0)
-        {
-            if (a - pow(2, count - 1) >= 0)
-            {
-                bin.append("1");
-                a = a - pow(2, count - 1);
-            }
-            else
-            {
-                bin.append("0");
-            }
-            count--;
-        }
-        cout << bin << endl;
-    }
-    return bin;
-}
+
 int bin_to_dec(string arr)
 {
     int decimal = 0;
@@ -47,6 +21,59 @@ int bin_to_dec(string arr)
         start = start * 2;
     }
     return decimal;
+}
+
+string dec_to_bin(int a) // decimal to binary
+{
+    string bin = "";
+    if (a != 0)
+    {
+        int b = abs(a);
+        int count = 0;
+        int temp = b;
+        while (temp - pow(2, count) >= 0)
+        {
+            count++;
+        }
+        // cout << count << endl;
+        while (count > 0)
+        {
+            if (b - pow(2, count - 1) >= 0)
+            {
+                bin.append("1");
+                b = b - pow(2, count - 1);
+            }
+            else
+            {
+                bin.append("0");
+            }
+            count--;
+        }
+        cout << "bin_1: " << bin << endl;
+    }
+    if (a == 0)
+    {
+        return 0;
+    }
+    if (a < 0)
+    {
+        for (int i = 0; i < bin.length(); i++)
+        {
+            if (bin[i] == '0')
+            {
+                bin[i] = '1';
+            }
+            else if (bin[i] == '1')
+            {
+                bin[i] = '0';
+            }
+        }
+        bin.insert(0, "0");
+        cout << "bin: " << bin << endl;
+        int plus_one = bin_to_dec(bin) + 1;
+    }
+
+    return bin;
 }
 
 int twocomp_to_dec(string arr, int amt)
@@ -145,3 +172,4 @@ int hex_to_dec(string address)
 
     return n;
 }
+#endif
