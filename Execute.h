@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int bin_to_dec(string a) // binary to decimal
+int bin_to_dec_a(string a) // binary to decimal
 {
     int sum = 0;
     for (int i = a.length() - 1; i >= 0; i--)
@@ -55,12 +55,12 @@ string Execute(string alu_ctrl, string data_1, string data_2)
     if (alu_ctrl == "0010") // add
     {
 
-        int sum = bin_to_dec(data_1) + bin_to_dec(data_2); // addition
+        int sum = bin_to_dec_a(data_1) + bin_to_dec_a(data_2); // addition
         to_return = dec_to_bin(sum);
     }
     else if (alu_ctrl == "0110") // sub
     {
-        int sum = bin_to_dec(data_1) - bin_to_dec(data_2); // sum
+        int sum = bin_to_dec_a(data_1) - bin_to_dec_a(data_2); // sum
         to_return = dec_to_bin(sum);
     }
     else if (alu_ctrl == "0000") // and
