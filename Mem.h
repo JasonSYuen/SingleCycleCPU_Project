@@ -11,11 +11,11 @@ int hex_to_dec(string address)
 {
     int n = 0;
     int count = address.length();
-    cout << "count: " << count << endl;
+    // cout << "count: " << count << endl;
     for (int i = 0; i < address.length(); i++)
     {
-        cout << address[i] << endl;
-        cout << int(address[i]) << endl;
+        // cout << address[i] << endl;
+        // cout << int(address[i]) << endl;
         if (int(address[i]) > 64 && int(address[i] < 71))
         {
             int val_letter = int(address[i]) - 55;
@@ -27,8 +27,8 @@ int hex_to_dec(string address)
             n = n + (int(address[i]) - 48) * pow(16, count - 1);
         }
         count--;
-        cout << "count: " << count << endl;
-        cout << "N: " << n << endl;
+        // cout << "count: " << count << endl;
+        // cout << "N: " << n << endl;
     }
 
     return n;
@@ -37,7 +37,7 @@ int hex_to_dec(string address)
 int Mem(string address, string lw_sw, string to_store)
 {
     // for testing purposes
-    cout << "////" << endl;
+    // cout << "////" << endl;
     for (int i = 0; i < 32; i++)
     {
 
@@ -46,13 +46,13 @@ int Mem(string address, string lw_sw, string to_store)
     int place_in_array = 0;
 
     place_in_array = hex_to_dec(address) / 4;
-    cout << place_in_array << endl;
-    cout << " test " << endl;
+    // << place_in_array << endl;
+    // cout << " test " << endl;
 
     if (lw_sw == "sw")
     {
         d_mem[place_in_array] = stoi(to_store);
-        cout << d_mem[place_in_array] << endl;
+        // cout << d_mem[place_in_array] << endl;
     }
 
     return d_mem[place_in_array];
