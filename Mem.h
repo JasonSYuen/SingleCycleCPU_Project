@@ -2,37 +2,10 @@
 #include <fstream>
 #include <string>
 #include <math.h>
-
+#include "dec_bin_hex_conversion.h"
 using namespace std;
 
 int d_mem[33];
-
-int hex_to_dec(string address)
-{
-    int n = 0;
-    int count = address.length();
-    // cout << "count: " << count << endl;
-    for (int i = 0; i < address.length(); i++)
-    {
-        // cout << address[i] << endl;
-        // cout << int(address[i]) << endl;
-        if (int(address[i]) > 64 && int(address[i] < 71))
-        {
-            int val_letter = int(address[i]) - 55;
-            n = n + val_letter * pow(16, count - 1);
-        }
-        else if (int(address[i]) < 58 && int(address[i]) > 47)
-        {
-
-            n = n + (int(address[i]) - 48) * pow(16, count - 1);
-        }
-        count--;
-        // cout << "count: " << count << endl;
-        // cout << "N: " << n << endl;
-    }
-
-    return n;
-}
 
 int Mem(string address, string lw_sw, string to_store)
 {
@@ -56,4 +29,34 @@ int Mem(string address, string lw_sw, string to_store)
     }
 
     return d_mem[place_in_array];
+}
+
+string dec_to_bin(int a) // decimal to binary
+{
+    string bin = "";
+    if (a > 0)
+    {
+        int count = 0;
+        int temp = a;
+        while (temp - pow(2, count) >= 0)
+        {
+            count++;
+        }
+        // cout << count << endl;
+        while (count > 0)
+        {
+            if (a - pow(2, count - 1) >= 0)
+            {
+                bin.append("1");
+                a = a - pow(2, count - 1);
+            }
+            else
+            {
+                bin.append("0");
+            }
+            count--;
+        }
+        cout << bin << endl;
+    }
+    return bin;
 }

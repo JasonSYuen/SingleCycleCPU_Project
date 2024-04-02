@@ -1,87 +1,23 @@
-#ifndef DECODE_H //guard
+#ifndef DECODE_H // guard
 #define DECODE_H
 #include <string>
 #include <iostream>
-
+#include "dec_bin_hex_conversion.h"
 using namespace std;
 
 extern int rf[32];
 
-int bin_to_dec(string arr)
+string *decode(string bin)
 {
-    int decimal = 0;
-
-    int start = 1;
-
-    int size = arr.length();
-    for(int i = size - 1; i >= 0; i--){
-        if(arr[i] == '1')
-            decimal += start;
-        start = start *2;
-    }
-    return decimal;
-}
-
-int twocomp_to_dec(string arr, int amt) {
-    int sign = 0;
-    if (arr[0] == 48) {
-        sign = 1;
-    }
-    else {
-        sign = -1;
-    }
-
-    //char reverse[amt + 1];
-    //char original[amt + 1];
-    string reverse;
-    string original;
-    if (sign == -1) {
-        for (int i = 0; i < amt; i++) {
-            if (arr[i] == '0') {
-                reverse[i] = '1';
-            }
-            else if (arr[i] == '1') {
-                reverse[i] = '0';
-            }
-        }
-        reverse[amt] = '\0';
-
-        int carry = 1;
-        for (int i = amt - 1; i >= 0; i--) {
-            if (reverse[i] == '1' && carry == 1) {
-                original[i] = '0';
-            }
-            else if (reverse[i] == '0' && carry == 1) {
-                original[i] = '1';
-                carry = 0;
-            }
-            else {
-                original[i] = reverse[i];
-            }
-        }
-        original[amt] = '\0';
-    }
-    else {
-        //strncpy(original, arr + (0), amt);
-        original = arr.substr(0, amt);
-    }
-
-    int dec = bin_to_dec(original);
-    dec = dec * sign;
-
-    return dec;
-}
-
-string* decode(string bin){
-    string* curr = new string[7];
-    //curr's values are as follow:
-    //operation, rs1, rs2, rd, imm, alu_ctrl
+    string *curr = new string[7];
+    // curr's values are as follow:
+    // operation, rs1, rs2, rd, imm, alu_ctrl
 
     string opcode = bin.substr(25, 7);
-    //strncpy(opcode, machine_code + (25), 7);
+    // strncpy(opcode, machine_code + (25), 7);
 
     string R = "0110011";
-    string R2 = "0111011"; 
+    string R2 = "0111011";
     string I = "0000011";
     string I2 = "0010011";
     string I3 = "1100111";
@@ -109,19 +45,19 @@ string* decode(string bin){
     string op = "";
     string op2 = ""; /////USE FOR OPERATION _________________________
 
-    //if (strcmp(opcode, R) == 0)
+    // if (strcmp(opcode, R) == 0)
     if (opcode == R)
     {
-        //strncpy(funct7, machine_code + (0), 7);
-        //strncpy(rs2, machine_code + (7), 5);
-        //strncpy(rs1, machine_code + (12), 5);
-        //strncpy(funct3, machine_code + (17), 3);
-        //strncpy(rd, machine_code + (20), 5);
-        funct7 = bin.substr(0,7);
-        rs2 = bin.substr(7,5);
-        rs1 = bin.substr(12,5);
-        funct3 = bin.substr(17,3);
-        rd = bin.substr(20,5);
+        // strncpy(funct7, machine_code + (0), 7);
+        // strncpy(rs2, machine_code + (7), 5);
+        // strncpy(rs1, machine_code + (12), 5);
+        // strncpy(funct3, machine_code + (17), 3);
+        // strncpy(rd, machine_code + (20), 5);
+        funct7 = bin.substr(0, 7);
+        rs2 = bin.substr(7, 5);
+        rs1 = bin.substr(12, 5);
+        funct3 = bin.substr(17, 3);
+        rd = bin.substr(20, 5);
 
         int x = bin_to_dec(funct3);
         int y = bin_to_dec(funct7);
@@ -135,17 +71,18 @@ string* decode(string bin){
         strncpy(funct3, machine_code + (17), 3);
         strncpy(rd, machine_code + (20), 5);*/
 
-        I_imm = bin.substr(0,12);
-        rs1 = bin.substr(12,5);
-        funct3 = bin.substr(17,3);
-        rd = bin.substr(20,5);
+        I_imm = bin.substr(0, 12);
+        rs1 = bin.substr(12, 5);
+        funct3 = bin.substr(17, 3);
+        rd = bin.substr(20, 5);
 
         int f3 = bin_to_dec(funct3);
         imm = I_imm;
 
         op = "I";
 
-        if (f3 == 2 && opcode ==  I) {
+        if (f3 == 2 && opcode == I)
+        {
             op2 = "lw";
         }
     }
@@ -159,10 +96,10 @@ string* decode(string bin){
         strncat(imm_total, S_imm, 8);
         strncat(imm_total, S2_imm, 6);*/
 
-        S_imm = bin.substr(0,7) + bin.substr(20,5);
-        rs2 = bin.substr(7,5);
-        rs1 = bin.substr(12,5);
-        funct3 = bin.substr(17,3);
+        S_imm = bin.substr(0, 7) + bin.substr(20, 5);
+        rs2 = bin.substr(7, 5);
+        rs1 = bin.substr(12, 5);
+        funct3 = bin.substr(17, 3);
 
         int x = bin_to_dec(funct3);
         imm = S_imm;
@@ -186,10 +123,10 @@ string* decode(string bin){
         strncat(imm_total, S2_imm, 4);
         strncat(imm_total, "00", 1);*/
 
-        S_imm = bin.substr(24,1) + bin.substr(1,6) + bin.substr(20,4) + "0";
-        rs2 = bin.substr(7,5);
-        rs1 = bin.substr(12,5);
-        funct3 = bin.substr(17,3);
+        S_imm = bin.substr(24, 1) + bin.substr(1, 6) + bin.substr(20, 4) + "0";
+        rs2 = bin.substr(7, 5);
+        rs1 = bin.substr(12, 5);
+        funct3 = bin.substr(17, 3);
 
         int x = bin_to_dec(funct3);
         imm = S_imm;
@@ -210,8 +147,8 @@ string* decode(string bin){
 
         strncpy(rd, machine_code + (20), 5);*/
 
-        UJ_imm = bin.substr(0,1) + bin.substr(12,8) + bin.substr(11,1) + bin.substr(1,10) + "0";
-        rd = bin.substr(20,25);
+        UJ_imm = bin.substr(0, 1) + bin.substr(12, 8) + bin.substr(11, 1) + bin.substr(1, 10) + "0";
+        rd = bin.substr(20, 25);
 
         imm = UJ_imm;
         op = "UJ";
@@ -223,26 +160,29 @@ string* decode(string bin){
     curr[3] = to_string(rf[bin_to_dec(rd)]);
     curr[4] = imm;
     curr[6] = op2;
-    if (op == "R"){
-        if(bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 0 || op2 == "lw" || op2 == "sw")
+    if (op == "R")
+    {
+        if (bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 0 || op2 == "lw" || op2 == "sw")
             curr[5] = "0010";
-        if(bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 32 || op == "beq")
+        if (bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 32 || op == "beq")
             curr[5] = "0110";
-        if(bin_to_dec(funct3) == 7 && bin_to_dec(funct7) == 0)
+        if (bin_to_dec(funct3) == 7 && bin_to_dec(funct7) == 0)
             curr[5] = "0000";
-        if(bin_to_dec(funct3) == 6 && bin_to_dec(funct7) == 0)
+        if (bin_to_dec(funct3) == 6 && bin_to_dec(funct7) == 0)
             curr[5] = "0001";
     }
-    else{
-        if(op2 == "lw"){
+    else
+    {
+        if (op2 == "lw")
+        {
             curr[5] = "0010";
         }
         if (op2 == "sw")
             curr[5] = "0010";
-        if(op2 == "beq")
+        if (op2 == "beq")
             curr[5] = "0110";
     }
-    
+
     return curr;
 }
 
