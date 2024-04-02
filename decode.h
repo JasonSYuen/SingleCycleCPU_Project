@@ -96,7 +96,7 @@ string* decode(string bin){
     string rs2 = "";
     string rd = "";
 
-    int imm = 0;
+    string imm;
 
     string I_imm = "";
 
@@ -141,7 +141,7 @@ string* decode(string bin){
         rd = bin.substr(20,5);
 
         int f3 = bin_to_dec(funct3);
-        imm = bin_to_dec(I_imm);
+        imm = I_imm;
 
         op = "I";
 
@@ -165,7 +165,7 @@ string* decode(string bin){
         funct3 = bin.substr(17,3);
 
         int x = bin_to_dec(funct3);
-        imm = bin_to_dec(S_imm);
+        imm = S_imm;
 
         op = "S";
 
@@ -192,7 +192,7 @@ string* decode(string bin){
         funct3 = bin.substr(17,3);
 
         int x = bin_to_dec(funct3);
-        imm = bin_to_dec(S_imm);
+        imm = S_imm;
         op = "SB";
 
         if (x == 0)
@@ -213,7 +213,7 @@ string* decode(string bin){
         UJ_imm = bin.substr(0,1) + bin.substr(12,8) + bin.substr(11,1) + bin.substr(1,10) + "0";
         rd = bin.substr(20,25);
 
-        imm = bin_to_dec(UJ_imm);
+        imm = UJ_imm;
         op = "UJ";
     }
 
@@ -221,7 +221,7 @@ string* decode(string bin){
     curr[1] = to_string(rf[bin_to_dec(rs1)]);
     curr[2] = to_string(rf[bin_to_dec(rs2)]);
     curr[3] = to_string(rf[bin_to_dec(rd)]);
-    curr[4] = to_string(imm);
+    curr[4] = imm;
     if (op == "R"){
         if(bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 0 || op2 == "lw" || op2 == "sw")
             curr[5] = "0010";
