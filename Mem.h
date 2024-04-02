@@ -34,10 +34,10 @@ int hex_to_dec(string address)
     return n;
 }
 
-int Mem(string address)
+int Mem(string address, string lw_sw)
 {
     // for testing purposes
-
+    cout << "////" << endl;
     for (int i = 0; i < 32; i++)
     {
 
