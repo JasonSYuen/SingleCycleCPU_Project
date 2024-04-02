@@ -157,7 +157,7 @@ string *decode(string bin)
     curr[0] = op;
     curr[1] = to_string(rf[bin_to_dec(rs1)]);
     curr[2] = to_string(rf[bin_to_dec(rs2)]);
-    curr[3] = to_string(rf[bin_to_dec(rd)]);
+    curr[3] = rd;
     curr[4] = imm;
     curr[6] = op2;
     if (op == "R")

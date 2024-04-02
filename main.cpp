@@ -3,26 +3,30 @@
 #include "Execute.h"
 #include "Mem.h"
 #include "decode.h"
+#include "writeback.h"
 
 using namespace std;
 
 int pc = 0;
 int rf[32];
+int total_clock_cycles;
+
 int main()
 {
     for (int j = 0; j < 6; j++)
     {
-
         cout << "hello world" << endl;
         string machine_code = Fetch();
         cout << "machine code: " << machine_code << endl;
         string *ALU_INFO = decode(machine_code);
-        cout << " " << endl;
+        cout << endl;
+        cout << "DECODE ARRAY: ";
         for (int i = 0; i < 7; i++)
         {
             cout << ALU_INFO[i] << ", ";
         }
-        cout << " " << endl;
+        cout << endl;
+        cout << endl;
         // operation, rs1, rs2, rd, imm, alu_ctrl
 
         string ALU_output;
@@ -52,6 +56,7 @@ int main()
             string ALU_output = Execute(ALU_INFO[5], ALU_INFO[1], ALU_INFO[2]);
         }
         */
+        cout << endl;
         cout << "ALU output: " << ALU_output << endl;
 
         int r = 10;
@@ -135,9 +140,18 @@ int main()
                 }
             }
             cout << "hex: " << hex_ALU_out << endl;
+            cout << endl;
+
             r = Mem(hex_ALU_out, ALU_INFO[6], ALU_INFO[2]);
             // r = Mem(hex_ALU_out, "sw", "00110");
+
+            
         }
-        cout << r << endl;
+        cout << "Memory Output: " << r << endl;
+        cout << endl;
+
+        writeback(ALU_output, r, ALU_INFO[3], ALU_INFO[6]);
+        cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
+        cout << "###############################################################" << endl;
     }
 }
