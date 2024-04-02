@@ -124,27 +124,7 @@ string* decode(string bin){
         int x = bin_to_dec(funct3);
         int y = bin_to_dec(funct7);
 
-        if (x == 0 && y == 0)
-        {            
-            //strcpy(op, "add");
-            op = "add";
-        }
-        if (x == 0 && y == 16)
-        {
-            //strcpy(op, "sub");
-            op = "sub";
-        }
-        if (x == 6)
-        {
-            ///strcpy(op, "or");
-            op = "or";
-        }
-        if (x == 7)
-        {
-            //strcpy(op, "and");
-            op = "and";
-        }
-
+        op = "R";
     }
     if (opcode == I || opcode == I2)
     {
@@ -161,21 +141,7 @@ string* decode(string bin){
         int f3 = bin_to_dec(funct3);
         imm = bin_to_dec(I_imm);
 
-        if (f3 == 2 && opcode == I) {
-            op = "lw";
-        }
-        if (f3 == 0 && opcode == I2) {
-            op = "addi";
-        }
-        if (f3 == 6 && opcode == I2) {
-            op = "ori";
-        }
-        if (f3 == 7 && opcode == I2) {
-            op = "andi";
-        }
-        /*if (f3 == 0 && strcmp(opcode, I3) == 0) {
-            strcpy(op, "jalr");
-        }*/
+        op = "I";
 
     }
     if (opcode == S)
@@ -196,10 +162,7 @@ string* decode(string bin){
         int x = bin_to_dec(funct3);
         imm = bin_to_dec(S_imm);
 
-        if (x == 2)
-        {
-            op = "sw";
-        }
+        op = "S";
 
     }
     if (opcode == SB)
@@ -221,11 +184,7 @@ string* decode(string bin){
 
         int x = bin_to_dec(funct3);
         imm = bin_to_dec(S_imm);
-
-        if (x == 0)
-        {
-            op = "beq";
-        }
+        op = "SB";
 
     }
     if (opcode == UJ)
@@ -242,7 +201,7 @@ string* decode(string bin){
         rd = bin.substr(20,25);
 
         imm = bin_to_dec(UJ_imm);
-        op = "jal";
+        op = "UJ";
     }
 
     curr[0] = op;
