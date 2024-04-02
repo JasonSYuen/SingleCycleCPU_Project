@@ -73,7 +73,7 @@ int twocomp_to_dec(string arr, int amt) {
 }
 
 string* decode(string bin){
-    string* curr = new string[6];
+    string* curr = new string[7];
     //curr's values are as follow:
     //operation, rs1, rs2, rd, imm, alu_ctrl
 
@@ -222,6 +222,7 @@ string* decode(string bin){
     curr[2] = to_string(rf[bin_to_dec(rs2)]);
     curr[3] = to_string(rf[bin_to_dec(rd)]);
     curr[4] = imm;
+    curr[6] = op2;
     if (op == "R"){
         if(bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 0 || op2 == "lw" || op2 == "sw")
             curr[5] = "0010";
