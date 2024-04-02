@@ -12,7 +12,7 @@ int bin_to_dec_a(string a) // binary to decimal
     {
         if (a[i] == '1')
         {
-            sum += pow(2, i - 1);
+            sum += pow(2, a.length() - 1 - i);
         }
     }
     return sum;
@@ -23,25 +23,21 @@ string dec_to_bin(int a) // decimal to binary
     string bin = "";
     int count = 0;
     int temp = a;
-    while (temp - pow(2, count) > 0)
+    while (temp - pow(2, count) >= 0)
     {
         count++;
     }
     cout << count << endl;
-    while (a >= 0)
+    while (count > 0)
     {
-        if (a - pow(2, count) >= 0)
+        if (a - pow(2, count - 1) >= 0)
         {
             bin.append("1");
-            a = a - pow(2, count);
+            a = a - pow(2, count - 1);
         }
         else
         {
             bin.append("0");
-            if (a == 0)
-            {
-                break;
-            }
         }
         count--;
     }
@@ -51,11 +47,14 @@ string dec_to_bin(int a) // decimal to binary
 string Execute(string alu_ctrl, string data_1, string data_2)
 {
     // first part done still need to do Zero ouput and Branch target address
+    cout << alu_ctrl << " " << data_1 << " " << data_2 << endl;
     string to_return;
     if (alu_ctrl == "0010") // add
     {
 
         int sum = bin_to_dec_a(data_1) + bin_to_dec_a(data_2); // addition
+
+        cout << bin_to_dec_a(data_1) << " " << bin_to_dec_a(data_2) << endl;
         to_return = dec_to_bin(sum);
     }
     else if (alu_ctrl == "0110") // sub
@@ -110,6 +109,6 @@ string Execute(string alu_ctrl, string data_1, string data_2)
         }
     }
 
-    cout << to_return << endl;
+    // cout << to_return << endl;
     return to_return;
 }
