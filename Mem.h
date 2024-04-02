@@ -34,7 +34,7 @@ int hex_to_dec(string address)
     return n;
 }
 
-int Mem(string address, string lw_sw)
+int Mem(string address, string lw_sw, string to_store)
 {
     // for testing purposes
     cout << "////" << endl;
@@ -48,6 +48,12 @@ int Mem(string address, string lw_sw)
     place_in_array = hex_to_dec(address) / 4;
     cout << place_in_array << endl;
     cout << " test " << endl;
+
+    if (lw_sw == "sw")
+    {
+        d_mem[place_in_array] = stoi(to_store);
+        cout << d_mem[place_in_array] << endl;
+    }
 
     return d_mem[place_in_array];
 }
