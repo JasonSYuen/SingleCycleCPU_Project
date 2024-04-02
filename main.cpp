@@ -7,7 +7,7 @@
 using namespace std;
 
 int pc = 0;
-
+int rf[32];
 int main()
 {
     cout << "hello world" << endl;
