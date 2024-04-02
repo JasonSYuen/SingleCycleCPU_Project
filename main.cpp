@@ -14,7 +14,7 @@ int main()
     string machine_code = Fetch();
     cout << machine_code << endl;
     string *ALU_INFO = decode(machine_code);
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < 7; i++)
     {
         cout << ALU_INFO[i] << endl;
     }
