@@ -127,7 +127,8 @@ int main()
             }
         }
         cout << "hex" << hex_ALU_out << endl;
-        r = Mem(hex_ALU_out, ALU_INFO[6]);
+        r = Mem(hex_ALU_out, ALU_INFO[6], ALU_INFO[2]);
+        // r = Mem(hex_ALU_out, "sw", "00110");
     }
     cout << r << endl;
 }
