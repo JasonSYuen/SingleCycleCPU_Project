@@ -154,9 +154,11 @@ string *decode(string bin)
         op = "UJ";
     }
 
+    // cout << "rs1: " << bin_to_dec(rs1) << endl;
+    // cout << "rs2: " << rs2 << endl;
     curr[0] = op;
-    curr[1] = to_string(rf[bin_to_dec(rs1)]);
-    curr[2] = to_string(rf[bin_to_dec(rs2)]);
+    curr[1] = dec_to_bin(rf[bin_to_dec(rs1)]);
+    curr[2] = dec_to_bin(rf[bin_to_dec(rs2)]);
     curr[3] = rd;
     curr[4] = imm;
     curr[6] = op2;
