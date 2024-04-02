@@ -13,15 +13,15 @@ string Execute(string alu_ctrl, string data_1, string data_2)
     if (alu_ctrl == "0010") // add
     {
 
-        int sum = bin_to_dec_a(data_1) + bin_to_dec_a(data_2); // addition
+        int sum = bin_to_dec(data_1) + bin_to_dec(data_2); // addition
 
-        cout << "add" << bin_to_dec_a(data_1) << " " << bin_to_dec_a(data_2) << endl;
+        cout << "add" << bin_to_dec(data_1) << " " << bin_to_dec(data_2) << endl;
         cout << (sum) << endl;
         to_return = dec_to_bin(sum);
     }
     else if (alu_ctrl == "0110") // sub
     {
-        int sum = bin_to_dec_a(data_1) - bin_to_dec_a(data_2); // sum
+        int sum = bin_to_dec(data_1) - bin_to_dec(data_2); // sum
         to_return = dec_to_bin(sum);
     }
     else if (alu_ctrl == "0000") // and
