@@ -21,6 +21,13 @@ string *controlUnit(string opcode)
 
     if (opcode == R || opcode == R2)
     {
+        controlSignals[0] = "1";  // regWrite
+        controlSignals[1] = "0";  // branch
+        controlSignals[2] = "0";  // ALUSRC
+        controlSignals[3] = "10"; // MemWrite;
+        controlSignals[4] = "0";  // MemToReg
+        controlSignals[5] = "0";  // MemRead
+        controlSignals[6] = "10"; // ALUOP
     }
     if (opcode == I || opcode == I2)
     {
