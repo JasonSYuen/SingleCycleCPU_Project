@@ -5,11 +5,16 @@
 #include "dec_bin_hex_conversion.h"
 using namespace std;
 
-string *controlUnit(string opcode)
-{
-    string *controlSignals = new string[7];
-    // regWrite, Branch, ALUSRC, MemWrite, MemtoReg, MemRead, ALUOP
+extern string regWrite;
+extern string branch;
+extern string aluSrc;
+extern string memWrite;
+extern string memToReg;
+extern string memRead;
+extern string aluOp;
 
+void controlUnit(string opcode)
+{
     string R = "0110011";
     string R2 = "0111011";
     string I = "0000011"; // lw
@@ -21,61 +26,59 @@ string *controlUnit(string opcode)
 
     if (opcode == R || opcode == R2)
     {
-        controlSignals[0] = "1";  // regWrite
-        controlSignals[1] = "0";  // branch
-        controlSignals[2] = "0";  // ALUSRC
-        controlSignals[3] = "0";  // MemWrite;
-        controlSignals[4] = "0";  // MemToReg
-        controlSignals[5] = "0";  // MemRead
-        controlSignals[6] = "10"; // ALUOP
+        regWrite = "1";  // regWrite
+        branch = "0";  // branch
+        aluSrc = "0";  // ALUSRC
+        memWrite = "0";  // MemWrite;
+        memToReg = "0";  // MemToReg
+        memRead = "0";  // MemRead
+        aluOp = "10"; // ALUOP
     }
     if (opcode == I)
     {
-        controlSignals[0] = "1";  // regWrite
-        controlSignals[1] = "0";  // branch
-        controlSignals[2] = "1";  // ALUSRC
-        controlSignals[3] = "0";  // MemWrite;
-        controlSignals[4] = "1";  // MemToReg
-        controlSignals[5] = "1";  // MemRead
-        controlSignals[6] = "00"; // ALUOP
+        regWrite = "1";  // regWrite
+        branch = "0";  // branch
+        aluSrc = "1";  // ALUSRC
+        memWrite = "0";  // MemWrite;
+        memToReg = "1";  // MemToReg
+        memRead = "1";  // MemRead
+        aluOp = "00"; // ALUOP
     }
 
     if (opcode == I2)
     {
-        controlSignals[0] = "1";  // regWrite
-        controlSignals[1] = "0";  // branch
-        controlSignals[2] = "1";  // ALUSRC
-        controlSignals[3] = "0";  // MemWrite;
-        controlSignals[4] = "0";  // MemToReg
-        controlSignals[5] = "0";  // MemRead
-        controlSignals[6] = "00"; // ALUOP
+        regWrite = "1";  // regWrite
+        branch = "0";  // branch
+        aluSrc = "1";  // ALUSRC
+        memWrite = "0";  // MemWrite;
+        memToReg = "0";  // MemToReg
+        memRead = "0";  // MemRead
+        aluOp = "00"; // ALUOP
     }
     if (opcode == S)
     {
-        controlSignals[0] = "0";  // regWrite
-        controlSignals[1] = "0";  // branch
-        controlSignals[2] = "1";  // ALUSRC
-        controlSignals[3] = "1";  // MemWrite;
-        controlSignals[4] = "0";  // MemToReg
-        controlSignals[5] = "0";  // MemRead
-        controlSignals[6] = "00"; // ALUOP
+        regWrite = "0";  // regWrite
+        branch = "0";  // branch
+        aluSrc = "1";  // ALUSRC
+        memWrite = "1";  // MemWrite;
+        memToReg = "0";  // MemToReg
+        memRead = "0";  // MemRead
+        aluOp = "00"; // ALUOP
     }
     if (opcode == SB)
     {
-        controlSignals[0] = "0";  // regWrite
-        controlSignals[1] = "1";  // branch
-        controlSignals[2] = "0";  // ALUSRC
-        controlSignals[3] = "0";  // MemWrite;
-        controlSignals[4] = "0";  // MemToReg
-        controlSignals[5] = "0";  // MemRead
-        controlSignals[6] = "01"; // ALUOP
+        regWrite = "0";  // regWrite
+        branch = "1";  // branch
+        aluSrc = "0";  // ALUSRC
+        memWrite = "0";  // MemWrite;
+        memToReg = "0";  // MemToReg
+        memRead = "0";  // MemRead
+        aluOp = "01"; // ALUOP
     }
 
     if (opcode == UJ)
     {
     }
-
-    return controlSignals;
 }
 
 #endif
