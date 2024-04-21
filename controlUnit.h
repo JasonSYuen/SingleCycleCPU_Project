@@ -8,7 +8,7 @@ using namespace std;
 string *controlUnit(string opcode)
 {
     string *controlSignals = new string[7];
-    // regWrite, Branch, ALUSRC, MemWrite, MemtoReg, MemRead
+    // regWrite, Branch, ALUSRC, MemWrite, MemtoReg, MemRead, ALUOP
 
     string R = "0110011";
     string R2 = "0111011";
