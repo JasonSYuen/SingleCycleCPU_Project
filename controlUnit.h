@@ -67,6 +67,8 @@ string *controlUnit(string opcode)
     if (opcode == UJ)
     {
     }
+
+    return controlSignals;
 }
 
 #endif
