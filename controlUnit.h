@@ -52,6 +52,13 @@ string *controlUnit(string opcode)
     }
     if (opcode == S)
     {
+        controlSignals[0] = "0";  // regWrite
+        controlSignals[1] = "0";  // branch
+        controlSignals[2] = "1";  // ALUSRC
+        controlSignals[3] = "1";  // MemWrite;
+        controlSignals[4] = "0";  // MemToReg
+        controlSignals[5] = "0";  // MemRead
+        controlSignals[6] = "00"; // ALUOP
     }
     if (opcode == SB)
     {

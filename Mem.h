@@ -29,4 +29,25 @@ int Mem(string address, string lw_sw, string to_store)
 
     return d_mem[place_in_array];
 }
+
+int Mem2(string address, string to_store, string MemWrite, string MemToReg, string MemRead)
+{
+    // for testing purposes
+    // cout << "////" << endl;
+    d_mem[28] = 5;
+    d_mem[29] = 16;
+    int place_in_array = 0;
+
+    place_in_array = hex_to_dec(address) / 4;
+    // << place_in_array << endl;
+    // cout << " test " << endl;
+
+    if (MemWrite == "1")
+    {
+        d_mem[place_in_array] = (bin_to_dec(to_store));
+        cout << " in d-mem [" << place_in_array << "]" << d_mem[place_in_array] << endl;
+    }
+
+    return d_mem[place_in_array];
+}
 #endif
