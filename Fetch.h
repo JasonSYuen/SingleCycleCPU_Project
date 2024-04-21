@@ -8,6 +8,8 @@ using namespace std;
 
 extern int pc;
 
+extern string branch;
+extern string branchTarget;
 string Fetch()
 {
 
@@ -33,6 +35,11 @@ string Fetch()
     pc += 4;
 
     int next_pc = pc + 4;
+
+    if (branch == "1")
+    {
+        // next_pc = pc + branchTarget;  branch target needs to be int
+    }
 
     return text;
 }

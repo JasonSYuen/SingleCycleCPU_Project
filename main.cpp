@@ -4,6 +4,7 @@
 #include "Mem.h"
 #include "decode.h"
 #include "writeback.h"
+#include "controlUnit.h"
 
 using namespace std;
 
@@ -11,6 +12,16 @@ int pc = 0;
 int rf[32];
 
 int total_clock_cycles = 0;
+
+string regWrite;
+string branch;
+string aluSrc;
+string memWrite;
+string memToReg;
+string memRead;
+string aluOp;
+string aluZero = "0";
+string branchTarget = "0";
 
 int main()
 {
@@ -22,9 +33,11 @@ int main()
     for (int j = 0; j < 6; j++)
     {
 
-        cout << "hello world" << endl;
+        // FETCH
         string machine_code = Fetch();
         cout << "machine code: " << machine_code << endl;
+
+        // DECODE
         string *ALU_INFO = decode(machine_code);
         cout << endl;
         cout << "DECODE ARRAY: ";
@@ -33,7 +46,9 @@ int main()
             cout << ALU_INFO[i] << ", ";
         }
         cout << endl;
-        cout << endl;
+
+        // EXECUTE
+
         // operation, rs1, rs2, rd, imm, alu_ctrl
 
         string ALU_output;
@@ -67,9 +82,10 @@ int main()
         cout << endl;
         cout << "ALU output: " << ALU_output << endl;
 
+        // MEM
         int r = 0;
 
-        if (ALU_INFO[6] == "lw" || ALU_INFO[6] == "sw")
+        if (memWrite == "1" || memRead == "1" || memToReg == "1")
         {
             int temp = bin_to_dec(ALU_output);
             cout << temp << endl;
@@ -83,7 +99,7 @@ int main()
         }
         cout << "Memory Output: " << r << endl;
         cout << endl;
-
+        // WRITE BACK
         writeback(ALU_output, r, ALU_INFO[3], ALU_INFO[6]);
         cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
 

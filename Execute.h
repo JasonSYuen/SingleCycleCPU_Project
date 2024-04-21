@@ -7,6 +7,7 @@
 #include "dec_bin_hex_conversion.h"
 using namespace std;
 
+extern string aluZero;
 string Execute(string alu_ctrl, string data_1, string data_2)
 {
     // first part done still need to do Zero ouput and Branch target address
@@ -75,6 +76,16 @@ string Execute(string alu_ctrl, string data_1, string data_2)
     }
 
     // cout << to_return << endl;
+
+    // Reset ALUzero
+    if (bin_to_dec(to_return) == 0)
+    {
+        aluZero = "1";
+    }
+    else
+    {
+        aluZero = "0";
+    }
     return to_return;
 }
 

@@ -9,6 +9,10 @@ using namespace std;
 
 int d_mem[33];
 
+extern string memWrite;
+extern string memToReg;
+extern string memRead;
+
 int Mem(string address, string lw_sw, string to_store)
 {
     // for testing purposes
@@ -30,7 +34,7 @@ int Mem(string address, string lw_sw, string to_store)
     return d_mem[place_in_array];
 }
 
-int Mem2(string address, string to_store, string MemWrite, string MemToReg, string MemRead)
+int Mem2(string address, string to_store)
 {
     // for testing purposes
     // cout << "////" << endl;
@@ -42,7 +46,7 @@ int Mem2(string address, string to_store, string MemWrite, string MemToReg, stri
     // << place_in_array << endl;
     // cout << " test " << endl;
 
-    if (MemWrite == "1")
+    if (memWrite == "1")
     {
         d_mem[place_in_array] = (bin_to_dec(to_store));
         cout << " in d-mem [" << place_in_array << "]" << d_mem[place_in_array] << endl;
