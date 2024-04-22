@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include "dec_bin_hex_conversion.h"
-
+#include "controlUnit.h"
 using namespace std;
 
 extern int rf[32];
