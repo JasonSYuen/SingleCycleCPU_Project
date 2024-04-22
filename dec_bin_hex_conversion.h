@@ -49,7 +49,7 @@ string dec_to_bin(int a) // decimal to binary
             }
             count--;
         }
-        //cout << "bin_1: " << bin << endl;
+        // cout << "bin_1: " << bin << endl;
     }
     if (a == 0)
     {
