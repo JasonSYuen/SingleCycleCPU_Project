@@ -4,40 +4,33 @@
 #include "Mem.h"
 #include "decode.h"
 #include "writeback.h"
-#include "controlUnit.h"
 
 using namespace std;
 
 int pc = 0;
 int rf[32];
+int total_clock_cycles;
 
-int total_clock_cycles = 0;
+string regWrite = "0";
+string branch = "0";
+string aluSrc = "0";
+string memWrite = "0";
+string memToReg = "0";
+string memRead = "0";
+string aluOp = "0";
 
-string regWrite;
-string branch;
-string aluSrc;
-string memWrite;
-string memToReg;
-string memRead;
-string aluOp;
-string aluZero = "0";
-string branchTarget = "0";
+int input1;
+int input2;
+int dest;
+int immediate;
 
 int main()
 {
-    rf[1] = 32;
-    rf[2] = 5;
-    rf[10] = 112;
-    rf[11] = 4;
-
     for (int j = 0; j < 6; j++)
     {
-
-        // FETCH
+        cout << "hello world" << endl;
         string machine_code = Fetch();
         cout << "machine code: " << machine_code << endl;
-
-        // DECODE
         string *ALU_INFO = decode(machine_code);
         cout << endl;
         cout << "DECODE ARRAY: ";
@@ -46,9 +39,7 @@ int main()
             cout << ALU_INFO[i] << ", ";
         }
         cout << endl;
-
-        // EXECUTE
-
+        cout << endl;
         // operation, rs1, rs2, rd, imm, alu_ctrl
 
         string ALU_output;
@@ -78,33 +69,102 @@ int main()
             string ALU_output = Execute(ALU_INFO[5], ALU_INFO[1], ALU_INFO[2]);
         }
         */
-
         cout << endl;
         cout << "ALU output: " << ALU_output << endl;
 
-        // MEM
-        int r = 0;
+        int r = 10;
 
-        if (memWrite == "1" || memRead == "1" || memToReg == "1")
+        if (ALU_INFO[6] == "lw" || ALU_INFO[6] == "sw")
         {
-            int temp = bin_to_dec(ALU_output);
-            cout << temp << endl;
-            string hex_ALU_out = dec_to_hex(temp);
+            int t = bin_to_dec(ALU_output) * 4;
+            ALU_output = dec_to_bin(t);
 
+            while (ALU_output.length() % 4 != 0)
+            {
+                ALU_output.insert(0, "0");
+            }
+            string hex_ALU_out = "";
+            for (int i = 0; i < ALU_output.length(); i = i + 4)
+            {
+                string temp = ALU_output.substr(i, 4);
+                if (temp == "0000")
+                {
+                    hex_ALU_out.append("0");
+                }
+                if (temp == "0001")
+                {
+                    hex_ALU_out.append("1");
+                }
+                if (temp == "0010")
+                {
+                    hex_ALU_out.append("2");
+                }
+                if (temp == "0011")
+                {
+                    hex_ALU_out.append("3");
+                }
+                if (temp == "0100")
+                {
+                    hex_ALU_out.append("4");
+                }
+                if (temp == "0101")
+                {
+                    hex_ALU_out.append("5");
+                }
+                if (temp == "0110")
+                {
+                    hex_ALU_out.append("6");
+                }
+                if (temp == "0111")
+                {
+                    hex_ALU_out.append("7");
+                }
+                if (temp == "1000")
+                {
+                    hex_ALU_out.append("8");
+                }
+                if (temp == "1001")
+                {
+                    hex_ALU_out.append("9");
+                }
+                if (temp == "1010")
+                {
+                    hex_ALU_out.append("A");
+                }
+                if (temp == "1011")
+                {
+                    hex_ALU_out.append("B");
+                }
+                if (temp == "1100")
+                {
+                    hex_ALU_out.append("C");
+                }
+                if (temp == "1101")
+                {
+                    hex_ALU_out.append("D");
+                }
+                if (temp == "1110")
+                {
+                    hex_ALU_out.append("E");
+                }
+                if (temp == "1111")
+                {
+                    hex_ALU_out.append("F");
+                }
+            }
             cout << "hex: " << hex_ALU_out << endl;
             cout << endl;
 
             r = Mem(hex_ALU_out, ALU_INFO[6], ALU_INFO[2]);
             // r = Mem(hex_ALU_out, "sw", "00110");
+
+            
         }
         cout << "Memory Output: " << r << endl;
         cout << endl;
-        // WRITE BACK
+
         writeback(ALU_output, r, ALU_INFO[3], ALU_INFO[6]);
         cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
-
-        cout << "total clock cycles: " << total_clock_cycles << endl;
-        cout << "pc: " << pc << endl;
         cout << "###############################################################" << endl;
     }
 }
