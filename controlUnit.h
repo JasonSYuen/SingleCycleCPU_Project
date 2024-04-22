@@ -1,28 +1,28 @@
 #ifndef controlUnit // guard
 #define controlUnit
 #include <iostream>
-#include "dec_bin_hex_conversion.h"
+#include <string>
 
 using namespace std;
 
-extern string regWrite;
-extern string branch;
-extern string aluSrc;
-extern string memWrite;
-extern string memToReg;
-extern string memRead;
-extern string aluOp;
+extern std::string regWrite;
+extern std::string branch;
+extern std::string aluSrc;
+extern std::string memWrite;
+extern std::string memToReg;
+extern std::string memRead;
+extern std::string aluOp;
 
 void controlUnit(string opcode)
 {
-    string R = "0110011";
-    string R2 = "0111011";
-    string I = "0000011"; // lw
-    string I2 = "0010011";
-    string I3 = "1100111";
-    string S = "0100011";
-    string SB = "1100011";
-    string UJ = "1101111";
+    std::string R = "0110011";
+    std::string R2 = "0111011";
+    std::string I = "0000011"; // lw
+    std::string I2 = "0010011";
+    std::string I3 = "1100111";
+    std::string S = "0100011";
+    std::string SB = "1100011";
+    std::string UJ = "1101111";
 
     if (opcode == R || opcode == R2)
     {
