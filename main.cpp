@@ -25,6 +25,7 @@ int dest;
 int immediate;
 string aluCtrl;
 
+string aluZero;
 int main()
 {
     for (int j = 0; j < 6; j++)
@@ -42,7 +43,7 @@ int main()
 
         cout << "ALU output: " << ALU_output << endl;
 
-        int r = 10;
+        int memOutput = 10;
 
         if (memWrite == "1" || memRead == "1" || memToReg == "1")
         {
@@ -58,14 +59,21 @@ int main()
             cout << "hex: " << hex_ALU_out << endl;
             cout << endl;
 
-            r = Mem2(hex_ALU_out, ALU_output);
+            memOutput = Mem2(hex_ALU_out, ALU_output);
             // r = Mem(hex_ALU_out, "sw", "00110");
         }
-        cout << "Memory Output: " << r << endl;
+
+        cout << "Memory Output: " << memOutput << endl;
         cout << endl;
 
-        writeback(ALU_output, r, ALU_INFO[3], ALU_INFO[6]);
-        cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
+        string l_or_s = "";
+        if (memRead == "1")
+        {
+            l_or_s = "lw";
+        }
+
+        writeback(ALU_output, memOutput, dec_to_bin(immediate), l_or_s);
+        // cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
         cout << "###############################################################" << endl;
     }
 }
