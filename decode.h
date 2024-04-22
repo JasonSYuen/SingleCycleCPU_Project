@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include "dec_bin_hex_conversion.h"
-#include "controlUnit.h"
+
 using namespace std;
 
 extern int rf[32];
@@ -15,9 +15,9 @@ extern string aluCtrl;
 
 void decode(string bin)
 {
-    //string *curr = new string[7];
-    // curr's values are as follow:
-    // operation, rs1, rs2, rd, imm, alu_ctrl
+    // string *curr = new string[7];
+    //  curr's values are as follow:
+    //  operation, rs1, rs2, rd, imm, alu_ctrl
 
     string opcode = bin.substr(25, 7);
 
@@ -60,10 +60,10 @@ void decode(string bin)
         funct3 = bin.substr(17, 3);
         rd = bin.substr(20, 5);
 
-        //int x = bin_to_dec(funct3);
-        //int y = bin_to_dec(funct7);
+        // int x = bin_to_dec(funct3);
+        // int y = bin_to_dec(funct7);
 
-        //op = "R";
+        // op = "R";
         if (bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 0)
             aluCtrl = "0010";
         if (bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 32 || op == "beq")
@@ -72,9 +72,8 @@ void decode(string bin)
             aluCtrl = "0000";
         if (bin_to_dec(funct3) == 6 && bin_to_dec(funct7) == 0)
             aluCtrl = "0001";
-
     }
-    if(aluOp == "00" && regWrite == "1")
+    if (aluOp == "00" && regWrite == "1")
     {
         I_imm = bin.substr(0, 12);
         rs1 = bin.substr(12, 5);
@@ -170,7 +169,7 @@ void decode(string bin)
             curr[4] = "0110";
     }*/
 
-    //return curr;
+    // return curr;
 }
 
 #endif
