@@ -33,15 +33,10 @@ string *decode(string bin)
     string rd = "";
 
     string imm;
-
     string I_imm = "";
-
     string S_imm = "";
-
     string SB_imm = "";
-
     string UJ_imm = "";
-
     string op = "";
     string op2 = ""; /////USE FOR OPERATION _________________________
 
