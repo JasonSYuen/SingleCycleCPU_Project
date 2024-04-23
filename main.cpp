@@ -81,7 +81,7 @@ int main()
         string machine_code = Fetch(input);
         // cout << "machine code: " << machine_code << endl;
         decode(machine_code);
-        cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
+        // cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
 
         // operation, rs1, rs2, rd, imm, alu_ctrl
         string ALU_output;
