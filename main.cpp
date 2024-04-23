@@ -36,6 +36,11 @@ int main()
     rf[10] = 112;
     rf[11] = 4;
 
+    rf[4] = 1;
+    rf[5] = 5;
+    rf[6] = 3;
+    rf[7] = 2;
+
     string input;
     cout << "Enter the program file name to run:" << endl;
     cin >> input;
@@ -52,7 +57,7 @@ int main()
         {
             branchbecauseiwantto = false;
         }
-        //cout << "hello world" << endl;
+        // cout << "hello world" << endl;
 
         input1 = 0;
         input2 = 0;
@@ -61,16 +66,16 @@ int main()
         aluCtrl = "";
 
         string machine_code = Fetch(input);
-        //cout << "machine code: " << machine_code << endl;
+        // cout << "machine code: " << machine_code << endl;
         decode(machine_code);
-        //cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
+        cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
 
         // operation, rs1, rs2, rd, imm, alu_ctrl
         string ALU_output;
 
         ALU_output = Execute(aluCtrl, input1, input2);
 
-        //cout << "ALU output: " << ALU_output << endl;
+        // cout << "ALU output: " << ALU_output << endl;
 
         int memOutput = 10;
 
@@ -85,23 +90,22 @@ int main()
             // }
             string hex_ALU_out = dec_to_hex(t);
 
-            //cout << "hex: " << hex_ALU_out << endl;
-            //cout << endl;
+            // cout << "hex: " << hex_ALU_out << endl;
+            // cout << endl;
 
             memOutput = Mem2(hex_ALU_out, dest);
             // r = Mem(hex_ALU_out, "sw", "00110");
         }
 
-        //cout << "Memory Output: " << memOutput << endl;
-        //cout << endl;
+        // cout << "Memory Output: " << memOutput << endl;
+        // cout << endl;
 
         writeback(ALU_output, memOutput, dest);
         // cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
-        //cout << "###############################################################" << endl;
+        // cout << "###############################################################" << endl;
         FetchEnd();
         cout << endl;
-
     }
     cout << "program terminated:" << endl;
-    cout << "total execution time is " << total_clock_cycles-1 << " cycles" << endl;
+    cout << "total execution time is " << total_clock_cycles - 1 << " cycles" << endl;
 }

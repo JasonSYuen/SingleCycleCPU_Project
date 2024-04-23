@@ -16,9 +16,9 @@ extern string aluCtrl;
 void decode(string bin)
 {
 
-    //string *curr = new string[7];
-    // curr's values are as follow:
-    // operation, rs1, rs2, rd, imm, alu_ctrl
+    // string *curr = new string[7];
+    //  curr's values are as follow:
+    //  operation, rs1, rs2, rd, imm, alu_ctrl
 
     string opcode = bin.substr(25, 7);
 
@@ -61,10 +61,10 @@ void decode(string bin)
         funct3 = bin.substr(17, 3);
         rd = bin.substr(20, 5);
 
-        //int x = bin_to_dec(funct3);
-        //int y = bin_to_dec(funct7);
+        // int x = bin_to_dec(funct3);
+        // int y = bin_to_dec(funct7);
 
-        //op = "R";
+        // op = "R";
         if (bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 0)
             aluCtrl = "0010";
         if (bin_to_dec(funct3) == 0 && bin_to_dec(funct7) == 32 || op == "beq")
@@ -76,13 +76,12 @@ void decode(string bin)
         input1 = rf[bin_to_dec(rs1)];
         input2 = rf[bin_to_dec(rs2)];
         dest = bin_to_dec(rd);
-
     }
-    if(aluOp == "00" && regWrite == "1")
+    if (aluOp == "00" && regWrite == "1")
     {
         I_imm = bin.substr(0, 12);
         rs1 = bin.substr(12, 5);
-        //cout << rs1 << endl;
+        // cout << rs1 << endl;
         funct3 = bin.substr(17, 3);
         rd = bin.substr(20, 5);
 
@@ -95,11 +94,17 @@ void decode(string bin)
         {
             op2 = "lw";
         }*/
+
         aluCtrl = "0010";
+
+        if (bin_to_dec(funct3) == 7 && bin_to_dec(funct7) == 0)
+            aluCtrl = "0000";
+        if (bin_to_dec(funct3) == 6 && bin_to_dec(funct7) == 0)
+            aluCtrl = "0001";
+
         input1 = rf[bin_to_dec(rs1)];
         input2 = bin_to_dec(imm);
         dest = bin_to_dec(rd);
-
     }
     if (aluOp == "00" && regWrite == "0")
     {
@@ -186,7 +191,7 @@ void decode(string bin)
             curr[4] = "0110";
     }*/
 
-    //return curr;
+    // return curr;
 }
 
 #endif

@@ -22,7 +22,7 @@ string Execute(string alu_ctrl, int data_1, int data_2)
         int sum = data_1 + data_2; // addition
 
         // cout << "add " << bin_to_dec(data_1) << " " << bin_to_dec(data_2) << endl;
-        //cout << "sum: " << (sum) << endl;
+        // cout << "sum: " << (sum) << endl;
         to_return = dec_to_bin(sum);
     }
     else if (alu_ctrl == "0110") // sub
@@ -33,6 +33,7 @@ string Execute(string alu_ctrl, int data_1, int data_2)
     }
     else if (alu_ctrl == "0000") // and
     {
+        cout << data_1 << " " << data_2 << endl;
         string data_1_bin = dec_to_bin(data_1);
         string data_2_bin = dec_to_bin(data_2);
 
