@@ -93,7 +93,6 @@ string Execute(string alu_ctrl, int data_1, int data_2)
         aluZero = "1";
         cout << "immediate " << immediate << endl;
         branchTarget = immediate * 4;
-
         cout << "branchTarget " << branchTarget << endl;
     }
     else

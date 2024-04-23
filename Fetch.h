@@ -3,11 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "dec_bin_hex_conversion.h"
 
 using namespace std;
-
-int amount;
 
 extern int pc;
 extern string aluZero;
@@ -36,22 +33,18 @@ string Fetch(string input)
     }
 
     MyFile.close();
-    amount = 4;
-    pc += amount;
+    pc += 4;
 
     int next_pc = pc + 4;
 
+    cout << "branch: " << branch << " aluzero: " << aluZero << endl;
     if (branch == "1" && aluZero == "1")
     {
-        amount = branchTarget;
-        pc = pc + amount;
+        pc = pc + branchTarget;
+        cout << pc << endl;
         // next_pc = pc + branchTarget;  branch target needs to be int
     }
 
     return text;
-}
-
-void FetchEnd(){
-    cout << "pc is modified to 0x" << dec_to_hex(pc) << endl;
 }
 #endif

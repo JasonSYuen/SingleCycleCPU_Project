@@ -60,7 +60,7 @@ int main()
 
     while (pc < count)
     {
-        cout << "count: " << count << "pc: " << pc << endl;
+        //cout << "count: " << count << "pc: " << pc << endl;
         cout << "total_clock_cycles " << total_clock_cycles << " :" << endl;
         if (pc == 8)
         {
@@ -81,7 +81,7 @@ int main()
         string machine_code = Fetch(input);
         // cout << "machine code: " << machine_code << endl;
         decode(machine_code);
-        // cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
+        cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
 
         // operation, rs1, rs2, rd, imm, alu_ctrl
         string ALU_output;
@@ -116,7 +116,7 @@ int main()
         writeback(ALU_output, memOutput, dest);
         // cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
         // cout << "###############################################################" << endl;
-        FetchEnd();
+        cout << "pc is modified to 0x" << dec_to_hex(pc) << endl;
         cout << endl;
     }
     cout << "program terminated:" << endl;
