@@ -25,58 +25,75 @@ void controlUnit(string opcode)
 
     if (opcode == R || opcode == R2)
     {
-        regWrite = "1";  // regWrite
-        branch = "0";  // branch
-        aluSrc = "0";  // ALUSRC
-        memWrite = "0";  // MemWrite;
-        memToReg = "0";  // MemToReg
+        regWrite = "1"; // regWrite
+        branch = "0";   // branch
+        aluSrc = "0";   // ALUSRC
+        memWrite = "0"; // MemWrite;
+        memToReg = "0"; // MemToReg
         memRead = "0";  // MemRead
-        aluOp = "10"; // ALUOP
+        aluOp = "10";   // ALUOP
     }
     if (opcode == I)
     {
-        regWrite = "1";  // regWrite
-        branch = "0";  // branch
-        aluSrc = "1";  // ALUSRC
-        memWrite = "0";  // MemWrite;
-        memToReg = "1";  // MemToReg
+        regWrite = "1"; // regWrite
+        branch = "0";   // branch
+        aluSrc = "1";   // ALUSRC
+        memWrite = "0"; // MemWrite;
+        memToReg = "1"; // MemToReg
         memRead = "1";  // MemRead
-        aluOp = "00"; // ALUOP
+        aluOp = "00";   // ALUOP
     }
 
     if (opcode == I2)
     {
-        regWrite = "1";  // regWrite
-        branch = "0";  // branch
-        aluSrc = "1";  // ALUSRC
-        memWrite = "0";  // MemWrite;
-        memToReg = "0";  // MemToReg
+        regWrite = "0"; // regWrite
+        branch = "1";   // branch
+        aluSrc = "0";   // ALUSRC
+        memWrite = "0"; // MemWrite;
+        memToReg = "0"; // MemToReg
         memRead = "0";  // MemRead
-        aluOp = "00"; // ALUOP
+        aluOp = "00";   // ALUOP
+    }
+    if (opcode == I3)
+    {
+        regWrite = "1"; // regWrite
+        branch = "0";   // branch
+        aluSrc = "1";   // ALUSRC
+        memWrite = "0"; // MemWrite;
+        memToReg = "0"; // MemToReg
+        memRead = "0";  // MemRead
+        aluOp = "00";   // ALUOP
     }
     if (opcode == S)
     {
-        regWrite = "0";  // regWrite
-        branch = "0";  // branch
-        aluSrc = "1";  // ALUSRC
-        memWrite = "1";  // MemWrite;
-        memToReg = "0";  // MemToReg
+        regWrite = "0"; // regWrite
+        branch = "0";   // branch
+        aluSrc = "1";   // ALUSRC
+        memWrite = "1"; // MemWrite;
+        memToReg = "0"; // MemToReg
         memRead = "0";  // MemRead
-        aluOp = "00"; // ALUOP
+        aluOp = "00";   // ALUOP
     }
     if (opcode == SB)
     {
-        regWrite = "0";  // regWrite
-        branch = "1";  // branch
-        aluSrc = "0";  // ALUSRC
-        memWrite = "0";  // MemWrite;
-        memToReg = "0";  // MemToReg
+        regWrite = "0"; // regWrite
+        branch = "1";   // branch
+        aluSrc = "0";   // ALUSRC
+        memWrite = "0"; // MemWrite;
+        memToReg = "0"; // MemToReg
         memRead = "0";  // MemRead
-        aluOp = "01"; // ALUOP
+        aluOp = "01";   // ALUOP
     }
 
     if (opcode == UJ)
     {
+        regWrite = "0"; // regWrite
+        branch = "1";   // branch
+        aluSrc = "0";   // ALUSRC
+        memWrite = "0"; // MemWrite;
+        memToReg = "0"; // MemToReg
+        memRead = "0";  // MemRead
+        aluOp = "00";   // ALUOP
     }
 }
 
