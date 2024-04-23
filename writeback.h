@@ -24,11 +24,13 @@ void writeback(string comp, int mem, int dest)
         if (memToReg == "1")
         {
             rf[dest] = mem;
+            cout << "x" << dest << " is modified to 0x" << dec_to_hex(mem) << endl;
         }
         else{
             rf[dest] = bin_to_dec(comp);
+            cout << "x" << dest << " is modified to 0x" << dec_to_hex(bin_to_dec(comp)) << endl;
         }
-        cout << "In rf[" << dest << "]: " << rf[dest] << endl;
+        //cout << "In rf[" << dest << "]: " << rf[dest] << endl;
     }
 
     total_clock_cycles++;

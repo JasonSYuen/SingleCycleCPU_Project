@@ -9,7 +9,7 @@ using namespace std;
 
 int pc = 0;
 int rf[32];
-int total_clock_cycles;
+int total_clock_cycles = 1;
 
 string regWrite = "0";
 string branch = "0";
@@ -31,13 +31,19 @@ string aluZero;
 bool branchbecauseiwantto = false;
 int main()
 {
-
     rf[1] = 32;
     rf[2] = 5;
     rf[10] = 112;
     rf[11] = 4;
+
+    string input;
+    cout << "Enter the program file name to run:" << endl;
+    cin >> input;
+    cout << endl;
+
     for (int j = 0; j < 6; j++)
     {
+        cout << "total_clock_cycles " << total_clock_cycles << " :" << endl;
         if (pc == 8)
         {
             branchbecauseiwantto = true;
@@ -46,7 +52,7 @@ int main()
         {
             branchbecauseiwantto = false;
         }
-        cout << "hello world" << endl;
+        //cout << "hello world" << endl;
 
         input1 = 0;
         input2 = 0;
@@ -54,17 +60,17 @@ int main()
         immediate = 0;
         aluCtrl = "";
 
-        string machine_code = Fetch();
-        cout << "machine code: " << machine_code << endl;
+        string machine_code = Fetch(input);
+        //cout << "machine code: " << machine_code << endl;
         decode(machine_code);
-        cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
+        //cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
 
         // operation, rs1, rs2, rd, imm, alu_ctrl
         string ALU_output;
 
         ALU_output = Execute(aluCtrl, input1, input2);
 
-        cout << "ALU output: " << ALU_output << endl;
+        //cout << "ALU output: " << ALU_output << endl;
 
         int memOutput = 10;
 
@@ -79,18 +85,23 @@ int main()
             // }
             string hex_ALU_out = dec_to_hex(t);
 
-            cout << "hex: " << hex_ALU_out << endl;
-            cout << endl;
+            //cout << "hex: " << hex_ALU_out << endl;
+            //cout << endl;
 
             memOutput = Mem2(hex_ALU_out, dest);
             // r = Mem(hex_ALU_out, "sw", "00110");
         }
 
-        cout << "Memory Output: " << memOutput << endl;
-        cout << endl;
+        //cout << "Memory Output: " << memOutput << endl;
+        //cout << endl;
 
         writeback(ALU_output, memOutput, dest);
         // cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
-        cout << "###############################################################" << endl;
+        //cout << "###############################################################" << endl;
+        FetchEnd();
+        cout << endl;
+
     }
+    cout << "program terminated:" << endl;
+    cout << "total execution time is " << total_clock_cycles-1 << " cycles" << endl;
 }

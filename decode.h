@@ -82,7 +82,7 @@ void decode(string bin)
     {
         I_imm = bin.substr(0, 12);
         rs1 = bin.substr(12, 5);
-        cout << rs1 << endl;
+        //cout << rs1 << endl;
         funct3 = bin.substr(17, 3);
         rd = bin.substr(20, 5);
 

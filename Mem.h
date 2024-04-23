@@ -49,7 +49,8 @@ int Mem2(string address, int to_store)
     if (memWrite == "1")
     {
         d_mem[place_in_array] = (to_store);
-        cout << " in d-mem [" << place_in_array << "]" << d_mem[place_in_array] << endl;
+        cout << "memory 0x" << address << " is modified to 0x" << dec_to_hex(to_store) << endl;
+        //cout << " in d-mem [" << place_in_array << "]" << d_mem[place_in_array] << endl;
     }
 
     return d_mem[place_in_array];
