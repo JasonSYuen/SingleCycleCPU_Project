@@ -28,7 +28,7 @@ int immediate;
 string aluCtrl;
 
 string aluZero;
-
+bool branchbecauseiwantto = false;
 int main()
 {
 
@@ -38,6 +38,14 @@ int main()
     rf[11] = 4;
     for (int j = 0; j < 6; j++)
     {
+        if (pc == 8)
+        {
+            branchbecauseiwantto = true;
+        }
+        else
+        {
+            branchbecauseiwantto = false;
+        }
         cout << "hello world" << endl;
 
         input1 = 0;
