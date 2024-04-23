@@ -8,15 +8,27 @@ using namespace std;
 extern int rf[32];
 extern int total_clock_cycles;
 
-void writeback(string comp, int mem, string dest, string type)
+extern string regWrite;
+extern string branch;
+extern string aluSrc;
+extern string memWrite;
+extern string memToReg;
+extern string memRead;
+extern string aluOp;
+
+void writeback(string comp, int mem, int dest)
 {
-    if (type == "")
+    
+    if (regWrite == "1")
     {
-        rf[bin_to_dec(dest)] = bin_to_dec(comp);
-    }
-    if (type == "lw")
-    {
-        rf[bin_to_dec(dest)] = mem;
+        if (memToReg == "1")
+        {
+            rf[dest] = mem;
+        }
+        else{
+            rf[dest] = bin_to_dec(comp);
+        }
+        cout << "In rf[" << dest << "]: " << rf[dest] << endl;
     }
 
     total_clock_cycles++;

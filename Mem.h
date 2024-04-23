@@ -34,7 +34,7 @@ int Mem(string address, string lw_sw, string to_store)
     return d_mem[place_in_array];
 }
 
-int Mem2(string address, string to_store)
+int Mem2(string address, int to_store)
 {
     // for testing purposes
     // cout << "////" << endl;
@@ -48,7 +48,7 @@ int Mem2(string address, string to_store)
 
     if (memWrite == "1")
     {
-        d_mem[place_in_array] = (bin_to_dec(to_store));
+        d_mem[place_in_array] = (to_store);
         cout << " in d-mem [" << place_in_array << "]" << d_mem[place_in_array] << endl;
     }
 

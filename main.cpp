@@ -26,15 +26,28 @@ int immediate;
 string aluCtrl;
 
 string aluZero;
+
 int main()
 {
+    
+    rf[1] = 32;
+    rf[2] = 5;
+    rf[10] = 112;
+    rf[11] = 4;
     for (int j = 0; j < 6; j++)
     {
         cout << "hello world" << endl;
+
+        input1 = 0;
+        input2 = 0;
+        dest = 0;
+        immediate = 0;
+        aluCtrl = "";
+
         string machine_code = Fetch();
         cout << "machine code: " << machine_code << endl;
         decode(machine_code);
-        cout << "DECODE ARRAY: " << input1 << input2 << dest << immediate << endl;
+        cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
 
         // operation, rs1, rs2, rd, imm, alu_ctrl
         string ALU_output;
@@ -47,7 +60,7 @@ int main()
 
         if (memWrite == "1" || memRead == "1" || memToReg == "1")
         {
-            int t = bin_to_dec(ALU_output) * 4;
+            int t = bin_to_dec(ALU_output);
             // ALU_output = dec_to_bin(t);
 
             // while (ALU_output.length() % 4 != 0)
@@ -59,21 +72,15 @@ int main()
             cout << "hex: " << hex_ALU_out << endl;
             cout << endl;
 
-            memOutput = Mem2(hex_ALU_out, ALU_output);
+            memOutput = Mem2(hex_ALU_out, dest);
             // r = Mem(hex_ALU_out, "sw", "00110");
         }
 
         cout << "Memory Output: " << memOutput << endl;
         cout << endl;
 
-        string l_or_s = "";
-        if (memRead == "1")
-        {
-            l_or_s = "lw";
-        }
-
-        writeback(ALU_output, memOutput, dec_to_bin(immediate), l_or_s);
-        // cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
+        writeback(ALU_output, memOutput, dest);
+        //cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
         cout << "###############################################################" << endl;
     }
 }
