@@ -19,6 +19,8 @@ string memToReg = "0";
 string memRead = "0";
 string aluOp = "0";
 
+int branchTarget;
+
 int input1;
 int input2;
 int dest;
@@ -29,7 +31,7 @@ string aluZero;
 
 int main()
 {
-    
+
     rf[1] = 32;
     rf[2] = 5;
     rf[10] = 112;
@@ -80,7 +82,7 @@ int main()
         cout << endl;
 
         writeback(ALU_output, memOutput, dest);
-        //cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
+        // cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
         cout << "###############################################################" << endl;
     }
 }

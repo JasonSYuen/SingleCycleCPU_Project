@@ -7,9 +7,10 @@
 using namespace std;
 
 extern int pc;
+extern string aluZero;
 
 extern string branch;
-extern string branchTarget;
+extern int branchTarget;
 string Fetch()
 {
 
@@ -36,8 +37,9 @@ string Fetch()
 
     int next_pc = pc + 4;
 
-    if (branch == "1")
+    if (branch == "1" && aluZero == "1")
     {
+        pc = pc + branchTarget;
         // next_pc = pc + branchTarget;  branch target needs to be int
     }
 

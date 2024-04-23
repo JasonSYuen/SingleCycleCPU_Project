@@ -8,6 +8,7 @@
 using namespace std;
 
 extern string aluZero;
+extern int immediate;
 string Execute(string alu_ctrl, int data_1, int data_2)
 {
     // first part done still need to do Zero ouput and Branch target address
@@ -86,6 +87,7 @@ string Execute(string alu_ctrl, int data_1, int data_2)
     if (bin_to_dec(to_return) == 0)
     {
         aluZero = "1";
+        branchTarget = immediate * 4;
     }
     else
     {
