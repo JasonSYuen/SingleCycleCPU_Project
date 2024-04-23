@@ -46,8 +46,21 @@ int main()
     cin >> input;
     cout << endl;
 
-    for (int j = 0; j < 6; j++)
+    ifstream MyFile;
+    MyFile.open(input);
+    int count = 0;
+    string line;
+    while (getline(MyFile, line))
     {
+        // cout << line << endl;
+        count += 4;
+    }
+
+    MyFile.close();
+
+    while (pc < count)
+    {
+        cout << "count: " << count << "pc: " << pc << endl;
         cout << "total_clock_cycles " << total_clock_cycles << " :" << endl;
         if (pc == 8)
         {
