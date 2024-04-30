@@ -66,6 +66,7 @@ string registerNameDuckery(int dest)
     {
         return "t" + to_string(dest - 25);
     }
+    return "oops";
 }
 
 void writeback(string comp, int mem, int dest)
