@@ -11,6 +11,7 @@ extern string aluZero;
 extern string aluSrc;
 extern int immediate;
 extern bool branchbecauseiwantto;
+extern int pc;
 
 string Execute(string alu_ctrl, int data_1, int data_2)
 {
@@ -93,14 +94,14 @@ string Execute(string alu_ctrl, int data_1, int data_2)
     {
         aluZero = "1";
         // cout << "immediate " << immediate << endl;
-        branchTarget = immediate;
+        branchTarget = immediate + pc;
         // cout << "branchTarget " << branchTarget << endl;
     }
 
     else if (aluSrc == "1" && branch == "1")
     {
         aluZero = "1";
-        branchTarget = bin_to_dec(to_return) - pc;
+        branchTarget = bin_to_dec(to_return);
     }
     else
     {

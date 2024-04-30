@@ -32,21 +32,35 @@ string aluZero;
 bool branchbecauseiwantto = false;
 int main()
 {
-    // sample_part1.txt
+    string input;
+    cout << "Enter the program file name to run:" << endl;
+    cin >> input;
+    cout << endl;
 
-    rf[1] = 32;
-    rf[2] = 5;
-    rf[10] = 112;
-    rf[11] = 4;
-    initializeMem();
+    // sample_part1.txt
+    if (input == "sample_part1.txt")
+    {
+        rf[1] = 32;
+        rf[2] = 5;
+        rf[10] = 112;
+        rf[11] = 4;
+        initializeMem();
+    }
+    else if (input == "sample_part2.txt")
+    {
+        // sample_part2.txt
+        rf[8] = 32;
+        rf[10] = 5;
+        rf[11] = 2;
+        rf[12] = 10;
+        rf[13] = 15;
+    }
+    else if (input == "sample_part3.txt")
+    {
+    }
+
     /*
-    // sample_part2.txt
-    rf[8] = 32;
-    rf[10] = 5;
-    rf[11] = 2;
-    rf[12] = 10;
-    rf[13] = 15;
-    */
+     */
     /*
     //sample_part3.txt
     rf[4] = 1;
@@ -54,11 +68,6 @@ int main()
     rf[6] = 3;
     rf[7] = 2;
     */
-
-    string input;
-    cout << "Enter the program file name to run:" << endl;
-    cin >> input;
-    cout << endl;
 
     ifstream MyFile;
     MyFile.open(input);

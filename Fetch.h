@@ -19,20 +19,20 @@ string Fetch(string input)
     string text;
     ifstream MyFile;
 
-    
-
-    //cout << "branch: " << branch << " aluzero: " << aluZero << endl;
+    // cout << "branch: " << branch << " aluzero: " << aluZero << endl;
     if (branch == "1" && aluZero == "1")
     {
-        pc = pc + branchTarget;
-        //cout << pc << endl;
-        // next_pc = pc + branchTarget;  branch target needs to be int
+        pc = branchTarget;
+        // cout << pc << endl;
+        //  next_pc = pc + branchTarget;  branch target needs to be int
     }
-    else{
+    else
+    {
         pc = next_pc;
     }
 
-    if(pc != 0){
+    if (pc != 0)
+    {
         cout << "pc is modified to 0x" << dec_to_hex(pc) << endl;
         cout << endl;
     }
