@@ -28,7 +28,7 @@ int Mem(string address, string lw_sw, string to_store)
     if (lw_sw == "sw")
     {
         d_mem[place_in_array] = (bin_to_dec(to_store));
-        cout << " in d-mem [" << place_in_array << "]" << d_mem[place_in_array] << endl;
+        //cout << " in d-mem [" << place_in_array << "]" << d_mem[place_in_array] << endl;
     }
 
     return d_mem[place_in_array];

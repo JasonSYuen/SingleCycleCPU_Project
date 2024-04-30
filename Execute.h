@@ -33,7 +33,7 @@ string Execute(string alu_ctrl, int data_1, int data_2)
     }
     else if (alu_ctrl == "0000") // and
     {
-        cout << data_1 << " " << data_2 << endl;
+        //cout << data_1 << " " << data_2 << endl;
         string data_1_bin = dec_to_bin(data_1);
         string data_2_bin = dec_to_bin(data_2);
 
@@ -91,9 +91,9 @@ string Execute(string alu_ctrl, int data_1, int data_2)
     if (bin_to_dec(to_return) == 0)
     {
         aluZero = "1";
-        cout << "immediate " << immediate << endl;
-        branchTarget = immediate * 4;
-        cout << "branchTarget " << branchTarget << endl;
+        //cout << "immediate " << immediate << endl;
+        branchTarget = immediate;
+        //cout << "branchTarget " << branchTarget << endl;
     }
     else
     {

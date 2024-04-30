@@ -70,7 +70,7 @@ string dec_to_bin(int a) // decimal to binary
             }
         }
         bin.insert(0, "0");
-        cout << "bin: " << bin << endl;
+        //cout << "bin: " << bin << endl;
         int plus_one = bin_to_dec(bin) + 1;
     }
 
