@@ -32,15 +32,26 @@ string aluZero;
 bool branchbecauseiwantto = false;
 int main()
 {
-    rf[1] = 32;
+    //sample_part1.txt
+    /*rf[1] = 32;
     rf[2] = 5;
     rf[10] = 112;
     rf[11] = 4;
 
+    //sample_part2.txt
+    rf[8] = 32;
+    rf[10] = 5;
+    rf[11] = 2;
+    rf[12] = 10;
+    rf[13] = 15;
+    
+    //sample_part3.txt
     rf[4] = 1;
     rf[5] = 5;
     rf[6] = 3;
-    rf[7] = 2;
+    rf[7] = 2;*/
+
+    
 
     string input;
     cout << "Enter the program file name to run:" << endl;
@@ -59,7 +70,7 @@ int main()
 
     MyFile.close();
 
-    while (pc < count)
+    while (pc < count-4)
     {
         //cout << "count: " << count << "pc: " << pc << endl;
         
@@ -119,6 +130,7 @@ int main()
         // cout << "In rf[" << bin_to_dec(ALU_INFO[3]) << "]: " << rf[bin_to_dec(ALU_INFO[3])] << endl;
         // cout << "###############################################################" << endl;
     }
+    Fetch(input);
     cout << "program terminated:" << endl;
     cout << "total execution time is " << total_clock_cycles - 1 << " cycles" << endl;
 }
