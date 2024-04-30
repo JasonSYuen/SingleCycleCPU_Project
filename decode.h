@@ -150,11 +150,11 @@ void decode(string bin)
     if (aluOp == "11")
     {
         UJ_imm = bin.substr(0, 1) + bin.substr(12, 8) + bin.substr(11, 1) + bin.substr(1, 10) + "0";
-        rd = bin.substr(20, 25);
+        rd = bin.substr(20, 5);
 
         imm = UJ_imm;
         op = "UJ";
-        
+
         aluCtrl = "0010";
         input1 = 0;
         input2 = 0;

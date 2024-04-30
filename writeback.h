@@ -17,6 +17,57 @@ extern string memRead;
 extern string aluOp;
 extern string rd;
 
+string registerNameDuckery(int dest)
+{
+    if (dest == 0)
+    {
+        return "zero";
+    }
+    if (dest == 1)
+    {
+        return "ra";
+    }
+    if (dest == 2)
+    {
+        return "sp";
+    }
+    if (dest == 3)
+    {
+        return "gp";
+    }
+    if (dest == 4)
+    {
+        return "tp";
+    }
+    if (dest > 4 && dest < 8)
+    {
+        return "t" + to_string(dest - 5);
+    }
+    if (dest == 8)
+    {
+        return "s0";
+    }
+    if (dest == 9)
+    {
+        return "s1";
+    }
+    // if (dest == 10 || dest == 11){
+    //     return "a" + to_string(dest-10);
+    // }
+    if (dest > 9 && dest < 18)
+    {
+        return "a" + to_string(dest - 10);
+    }
+    if (dest > 17 && dest < 28)
+    {
+        return "s" + to_string(dest - 16);
+    }
+    if (dest > 27)
+    {
+        return "t" + to_string(dest - 25);
+    }
+}
+
 void writeback(string comp, int mem, int dest)
 {
 
@@ -27,14 +78,16 @@ void writeback(string comp, int mem, int dest)
             rf[dest] = mem;
             cout << "x" << dest << " is modified to 0x" << dec_to_hex(mem) << endl;
         }
+        else if (branch == "1")
+        {
+            rf[dest] = pc + 4;
+            cout << "ra is modified to 0x" << dec_to_hex(pc + 4) << endl;
+        }
+
         else
         {
             rf[dest] = bin_to_dec(comp);
             cout << "x" << dest << " is modified to 0x" << dec_to_hex(bin_to_dec(comp)) << endl;
-        }
-        if (branch == "1")
-        {
-            rf[dest] = pc + 4;
         }
 
         // cout << "In rf[" << dest << "]: " << rf[dest] << endl;
