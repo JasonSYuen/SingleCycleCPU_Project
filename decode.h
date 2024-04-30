@@ -16,6 +16,7 @@ extern string aluCtrl;
 void decode(string bin)
 {
 
+    // string *curr = new string[7];
     //  curr's values are as follow:
     //  operation, rs1, rs2, rd, imm, alu_ctrl
 
@@ -38,10 +39,15 @@ void decode(string bin)
     string rd = "";
 
     string imm;
+
     string I_imm = "";
+
     string S_imm = "";
+
     string SB_imm = "";
+
     string UJ_imm = "";
+
     string op = "";
     string op2 = ""; /////USE FOR OPERATION _________________________
 
@@ -141,14 +147,20 @@ void decode(string bin)
         input2 = rf[bin_to_dec(rs2)];
         immediate = bin_to_dec(imm);
     }
-    /*if (opcode == UJ)
+    if (aluOp == "11")
     {
         UJ_imm = bin.substr(0, 1) + bin.substr(12, 8) + bin.substr(11, 1) + bin.substr(1, 10) + "0";
         rd = bin.substr(20, 25);
 
         imm = UJ_imm;
         op = "UJ";
-    }*/
+        
+        aluCtrl = "0010";
+        input1 = 0;
+        input2 = 0;
+        immediate = bin_to_dec(UJ_imm);
+        dest = bin_to_dec(rd);
+    }
 
     /*input1 = rf[bin_to_dec(rs1)];
     input2 = rf[bin_to_dec(rs2)];
