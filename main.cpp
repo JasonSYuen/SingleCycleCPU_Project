@@ -32,26 +32,27 @@ string aluZero;
 bool branchbecauseiwantto = false;
 int main()
 {
-    //sample_part1.txt
-    /*rf[1] = 32;
+    // sample_part1.txt
+    /*
+    rf[1] = 32;
     rf[2] = 5;
     rf[10] = 112;
     rf[11] = 4;
-
-    //sample_part2.txt
+    initializeMem();
+    */
+    // sample_part2.txt
     rf[8] = 32;
     rf[10] = 5;
     rf[11] = 2;
     rf[12] = 10;
     rf[13] = 15;
-    
+    /*
     //sample_part3.txt
     rf[4] = 1;
     rf[5] = 5;
     rf[6] = 3;
-    rf[7] = 2;*/
-
-    
+    rf[7] = 2;
+    */
 
     string input;
     cout << "Enter the program file name to run:" << endl;
@@ -70,10 +71,10 @@ int main()
 
     MyFile.close();
 
-    while (pc < count-4)
+    while (pc < count - 4)
     {
-        //cout << "count: " << count << "pc: " << pc << endl;
-        
+        // cout << "count: " << count << "pc: " << pc << endl;
+
         if (pc == 8)
         {
             branchbecauseiwantto = true;
@@ -94,7 +95,7 @@ int main()
         cout << "total_clock_cycles " << total_clock_cycles << " :" << endl;
         // cout << "machine code: " << machine_code << endl;
         decode(machine_code);
-        //cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
+        // cout << "DECODE ARRAY: " << input1 << " " << input2 << " " << dest << " " << immediate << endl;
 
         // operation, rs1, rs2, rd, imm, alu_ctrl
         string ALU_output;
