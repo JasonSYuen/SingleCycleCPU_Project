@@ -16,7 +16,6 @@ extern string aluCtrl;
 void decode(string bin)
 {
 
-    // string *curr = new string[7];
     //  curr's values are as follow:
     //  operation, rs1, rs2, rd, imm, alu_ctrl
 
@@ -39,15 +38,10 @@ void decode(string bin)
     string rd = "";
 
     string imm;
-
     string I_imm = "";
-
     string S_imm = "";
-
     string SB_imm = "";
-
     string UJ_imm = "";
-
     string op = "";
     string op2 = ""; /////USE FOR OPERATION _________________________
 
