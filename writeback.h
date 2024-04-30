@@ -80,8 +80,8 @@ void writeback(string comp, int mem, int dest)
         }
         else if (branch == "1")
         {
-            rf[dest] = pc + 4;
-            cout << "ra is modified to 0x" << dec_to_hex(pc + 4) << endl;
+            rf[dest] = pc;
+            cout << "ra is modified to 0x" << dec_to_hex(pc) << endl;
         }
 
         else
