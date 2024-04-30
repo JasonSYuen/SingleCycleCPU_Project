@@ -33,19 +33,20 @@ bool branchbecauseiwantto = false;
 int main()
 {
     // sample_part1.txt
-    /*
+
     rf[1] = 32;
     rf[2] = 5;
     rf[10] = 112;
     rf[11] = 4;
     initializeMem();
-    */
+    /*
     // sample_part2.txt
     rf[8] = 32;
     rf[10] = 5;
     rf[11] = 2;
     rf[12] = 10;
     rf[13] = 15;
+    */
     /*
     //sample_part3.txt
     rf[4] = 1;
