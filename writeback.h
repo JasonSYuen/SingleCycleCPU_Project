@@ -66,6 +66,7 @@ string registerNameDuckery(int dest)
     {
         return "t" + to_string(dest - 25);
     }
+    return 0;
 }
 
 void writeback(string comp, int mem, int dest)
@@ -80,8 +81,8 @@ void writeback(string comp, int mem, int dest)
         }
         else if (branch == "1")
         {
-            rf[dest] = pc;
-            cout << registerNameDuckery(dest) << " is modified to 0x" << dec_to_hex(pc) << endl;
+            rf[dest] = pc+4;
+            cout << registerNameDuckery(dest) << " is modified to 0x" << dec_to_hex(pc+4) << endl;
         }
 
         else
