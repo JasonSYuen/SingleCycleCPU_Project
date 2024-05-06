@@ -17,7 +17,7 @@ extern string memRead;
 extern string aluOp;
 extern string rd;
 
-string registerNameDuckery(int dest)
+string registerName(int dest)
 {
     if (dest == 0)
     {
@@ -77,18 +77,18 @@ void writeback(string comp, int mem, int dest)
         if (memToReg == "1")
         {
             rf[dest] = mem;
-            cout << registerNameDuckery(dest) << " is modified to 0x" << dec_to_hex(mem) << endl;
+            cout << registerName(dest) << " is modified to 0x" << dec_to_hex(mem) << endl;
         }
         else if (branch == "1")
         {
             rf[dest] = pc + 4;
-            cout << registerNameDuckery(dest) << " is modified to 0x" << dec_to_hex(pc + 4) << endl;
+            cout << registerName(dest) << " is modified to 0x" << dec_to_hex(pc + 4) << endl;
         }
 
         else
         {
             rf[dest] = bin_to_dec(comp);
-            cout << registerNameDuckery(dest) << " is modified to 0x" << dec_to_hex(bin_to_dec(comp)) << endl;
+            cout << registerName(dest) << " is modified to 0x" << dec_to_hex(bin_to_dec(comp)) << endl;
         }
 
         // cout << "In rf[" << dest << "]: " << rf[dest] << endl;
